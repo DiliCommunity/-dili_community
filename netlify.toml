@@ -1,0 +1,3 @@
+[build]
+  publish = "public"
+  command = "# команда сборки, если нужна" 
