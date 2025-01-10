@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             
             try {
-                window.location.href = '/login.html';
+                // Перенаправляем на страницу входа
+                window.location.href = 'login.html';
             } catch (error) {
                 console.error('Ошибка при выходе:', error);
             }

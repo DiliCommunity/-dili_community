@@ -8,7 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname)));
 
 // Настройка подключения к базе данных
 const connection = mysql.createConnection({
@@ -107,23 +107,20 @@ app.post('/login', (req, res) => {
 
 // Базовый маршрут
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'login.html'));
-});
-
-app.get('/dashboard', (req, res) => {
-    // Здесь можно добавить проверку авторизации
-    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/catalog', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'catalog.html'));
+    res.sendFile(path.join(__dirname, 'catalog.html'));
 });
 
 app.get('/cart', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'cart.html'));
+    res.sendFile(path.join(__dirname, 'cart.html'));
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'about.html'));
+});
 
 app.listen(PORT, () => {
     console.log(`Сервер запущен на порту ${PORT}`);
